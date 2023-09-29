@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SWIGGY_API_URL } from "../config/app-config"; 
 
-export const useRestaurants = () =>{
+export const useRestaurants = (setFilteredRestaurant) =>{
 
     const [restaurantList, setRestaurantList] = useState([]);
 
@@ -12,6 +12,7 @@ export const useRestaurants = () =>{
             response = await response.json();
             response = response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             setRestaurantList(response);
+            setFilteredRestaurant(response);
         };
 
         fetchData();
