@@ -1,0 +1,19 @@
+{
+  "name": "food-manor",
+  "version": "1.0.0",
+  "description": "A food ordering web app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "Laxmi Kumar Sahani",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  }
+}
