@@ -18,14 +18,14 @@ const Body = () =>{
 
 
     return(
-        <div className=" w-screen">
+        <div className="min-h-screen">
             <div className="text-center">
                 <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)}/>
                 <button onClick={()=>handleRestaurants()}>Search</button>
             </div>
             <div className="flex flex-wrap justify-around">
                 {
-                    filteredRestaurant?.length === 0 ? <p>Loading</p> : filteredRestaurant.map(restaurant => <RestaurantCard key={restaurant?.info?.id} name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.cloudinaryImageId?.costForTwo} rating={restaurant?.info?.avgRating} cuisines={restaurant?.info?.cuisines}/>)
+                    filteredRestaurant?.length === 0 ? <p>Loading</p> : filteredRestaurant?.map(restaurant => <RestaurantCard key={restaurant?.info?.id} name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.cloudinaryImageId?.costForTwo} rating={restaurant?.info?.avgRating} cuisines={restaurant?.info?.cuisines}/>)
                     
                 }
             </div>
