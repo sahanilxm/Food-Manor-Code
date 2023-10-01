@@ -12,7 +12,6 @@ export const useRestaurants = (setFilteredRestaurant) =>{
             response = response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             setRestaurantList(response);
             setFilteredRestaurant(response);
-            console.log(response);
         };
 
         fetchData();

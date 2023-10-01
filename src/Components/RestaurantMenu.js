@@ -1,11 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { IMAGE_URL, NO_IMAGE_URL } from '../config/app-config';
 import { useRestaurantMenu } from '../hooks/useRestaurantMenu';
+import { addItem } from '../utils/cartSlice';
 
 
 const MenuItem = ({name, description, imageURL, price, rating}) =>{
+
+    const dispatch = useDispatch();
+    const itemDetails = {name, description, imageURL, price, rating};
+
     return (
         <div className='flex border border-black justify-between px-6 py-2 w-4/5 my-2 mx-auto'>
             <div className='w-3/4'>
@@ -16,7 +22,7 @@ const MenuItem = ({name, description, imageURL, price, rating}) =>{
             </div>
             <div>
                 <img src={imageURL} className='w-36 h-24 border border-black p-0.5 rounded-md'/>
-                <button className='border border-black w-36 mt-1'>Add</button>
+                <button className='border border-black w-36 mt-1' onClick={()=>dispatch(addItem(itemDetails))}>Add</button>
             </div>
         </div>
     );
