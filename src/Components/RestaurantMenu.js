@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { RESTAURANT_MENU_API_URL, IMAGE_URL } from '../config/app-config';
+import { IMAGE_URL, NO_IMAGE_URL } from '../config/app-config';
+import { useRestaurantMenu } from '../hooks/useRestaurantMenu';
 
 
 const MenuItem = ({name, description, imageURL, price, rating}) =>{
@@ -26,27 +27,24 @@ const RestaurantMenu = () => {
     let params = useParams();
     params = params.id;
 
-    const [restaurantDetail, setRestaurantDetail] = useState({});
-    const [restaurantMenu, setRestaurantMenu] = useState([]); 
+    const [filteredRestaurantMenu, setFilteredRestaurantMenu] = useState([]);
+    const [searchItem, setSearchItem] = useState("");
 
-    useEffect(()=>{
-        const fetchData = async () => {
-            let response = await fetch (RESTAURANT_MENU_API_URL+params);
-            response = await response.json();
-            setRestaurantDetail(response?.data?.cards[0]?.card?.card?.info);
-            setRestaurantMenu(response?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-        };
-        fetchData();
-    }, []);
+    const [restaurantDetail,restaurantMenu] = useRestaurantMenu(params, setFilteredRestaurantMenu);
 
-    console.log(restaurantMenu);
+    const handleRestaurantMenu = () =>{
+        console.log(searchItem);
+        let filteredData = restaurantMenu.filter(item => item?.card?.info?.name.toLowerCase().includes(searchItem.toLowerCase()));
+        console.log(filteredData);
+        setFilteredRestaurantMenu(filteredData);
+    };
 
     return(
         <div className='w-full'>
             <div className='border border-black mb-8'>
                 <div className='flex w-3/4 justify-center p-2'>
                     <div>
-                        <img src={IMAGE_URL+restaurantDetail?.cloudinaryImageId} className='w-48 h-40 rounded-md border border-black p-0.5'/>
+                        <img src={restaurantDetail?.cloudinaryImageId !== undefined ? IMAGE_URL+restaurantDetail?.cloudinaryImageId: NO_IMAGE_URL} className='w-48 h-40 rounded-md border border-black p-0.5'/>
                     </div>
                     <div className='pl-4 py-8 space-y-2'>
                         <p className='underline'>{restaurantDetail?.name}</p>
@@ -58,22 +56,20 @@ const RestaurantMenu = () => {
                     </div>
                 </div>
             </div>
+
             <div className='flex border border-black justify-between px-6 py-2 w-4/5 my-2 mx-auto'>
                 <p>Recommeded Items</p>
                 <p>Sort</p>
             </div>
             <div className='text-center'>
-                <input placeholder='Search a food...' className='border border-black p-1.5'/>
-                <button className='border border-black p-1.5'>Search</button>
+                <input placeholder='Search a food...' className='border border-black p-1.5' onChange={(e)=> setSearchItem(e.target.value)}/>
+                <button className='border border-black p-1.5' onClick={()=>handleRestaurantMenu()}>Search</button>
             </div>
+
             <div>
                 {
-                    restaurantMenu?.length == 0 ? <p>Loading</p> : 
-                    restaurantMenu?.map((item) => {
-                        if(item?.card?.card?.itemCards !== undefined){
-                            return item?.card?.card?.itemCards?.map(subItem => <MenuItem name={subItem?.card?.info?.name} description={subItem?.card?.info?.description} imageURL={IMAGE_URL+subItem?.card?.info?.imageId} rating={subItem?.card?.info?.ratings?.aggregatedRating?.rating} price={subItem?.card?.info?.price} />)
-                        }
-                    })
+                    filteredRestaurantMenu?.length == 0 ? <p>Loading</p> : filteredRestaurantMenu.map((item, index) =>
+                    <MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
                 }
             </div>
         </div>

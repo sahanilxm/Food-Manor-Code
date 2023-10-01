@@ -9,7 +9,7 @@ export const useRestaurants = (setFilteredRestaurant) =>{
         async function fetchData (){
             let response =await fetch(SWIGGY_API_URL);
             response = await response.json();
-            response = response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+            response = response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             setRestaurantList(response);
             setFilteredRestaurant(response);
             console.log(response);
