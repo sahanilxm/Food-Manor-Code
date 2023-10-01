@@ -6,5 +6,6 @@ import RestaurantCard from './RestaurantCard';
 import RestaurantMenu from './RestaurantMenu';
 import About from './About';
 import Cart from './Cart';
+import { RestaurantShimmer } from './Shimmer';
 
-export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer};
+export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer, RestaurantShimmer};
