@@ -1,6 +1,6 @@
 const RestaurantCard = ({name, imageURL, cuisines, price, rating, totalRating}) =>{
     return(
-        <div className=" m-2 hover:cursor-pointer p-1.5 bg-restaurantBg rounded-md">
+        <div className="m-2 hover:cursor-pointer bg-restaurantBg rounded-md">
             <img src={imageURL} className="h-48 w-full rounded-md"/>
             <p className=" line-clamp-1 font-restaurantFont text-lg">{name}</p>
             <p className=" line-clamp-1 font-normal">{cuisines.join(', ')}</p>

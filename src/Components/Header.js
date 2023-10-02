@@ -6,7 +6,7 @@ const Header = () =>{
     const cartItem = useSelector(store => store.cart.items);
 
     return(
-        <div className="fixed w-full">
+        <div className="fixed">
             <div className=" flex justify-between border rounded-md p-6 bg-restaurantBg">
                 <div>
                     <p className="text-blue-950 font-logoFont text-2xl font-extrabold">Food Manor</p>
