@@ -21,7 +21,7 @@ const Body = () =>{
     return(
         <div className='p-4 pt-24'>
             <div className="text-center">
-                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border p-1.5 rounded-l-md font-restaurantFont w-1/3'/>
+                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border p-1.5 rounded-l-md font-restaurantFont md:w-1/3 w-2/3'/>
                 <button onClick={()=>handleRestaurants()} className='p-1.5 bg-btnBg text-white rounded-r-md hover:bg-blue-950'>Search</button>
             </div>
             

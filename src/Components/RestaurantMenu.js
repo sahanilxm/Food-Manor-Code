@@ -87,7 +87,7 @@ const RestaurantMenu = () => {
                             </div>
                         </div>
                         <div className='text-center'>
-                            <input placeholder='Search a food...' className='border  p-1.5 rounded-l-md font-itemFont font-bold w-1/4' onChange={(e)=> setSearchItem(e.target.value)}/>
+                            <input placeholder='Search a food...' className='border  p-1.5 rounded-l-md font-itemFont font-bold w-1/2 md:w-1/4' onChange={(e)=> setSearchItem(e.target.value)}/>
                             <button className='p-1.5 border bg-btnBg rounded-r-md text-white hover:bg-blue-950' onClick={()=>handleRestaurantMenu()}>Search</button>
                         </div>
                             {

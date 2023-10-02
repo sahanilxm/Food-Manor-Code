@@ -20,7 +20,7 @@ export const RestaurantShimmer = () => {
     return(
         <div className="flex flex-wrap w-full">
             {
-                Array(20).fill("").map((item, index) => <div key={index} className="w-1/6"><RestaurantCardShimmer/></div>)
+                Array(20).fill("").map((item, index) => <div key={index} className="w-full min-[450px]:w-1/2 md:w-1/4 lg:w-1/6"><RestaurantCardShimmer/></div>)
             }
         </div>
     );
