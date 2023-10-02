@@ -18,7 +18,7 @@ const CartItem = ({name, imageURL, description, rating, price}) =>{
                 </div>
                 <div>
                     <img src={imageURL} className='w-36 h-24 border border-black p-0.5 rounded-md'/>
-                    <button className='border bg-btnBg text-white rounded-md w-36 mt-1' onClick={()=>dispatch(removeItem(name))}>Remove</button>
+                    <button className='border bg-btnBg text-white rounded-md w-36 mt-1 hover:bg-blue-950' onClick={()=>dispatch(removeItem(name))}>Remove</button>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@ const Cart = () => {
 
 
     return(
-        <div>
+        <div className='pt-24'>
             <div>
                 {
                     cartItems.map((item, index) => <CartItem key={index} name={item.name} imageURL={item.imageURL} description={item.description} rating={item.rating} price={item.price}/>)
@@ -77,7 +77,7 @@ const Cart = () => {
                             <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
                         </div>
                         <div className='flex justify-center border w-fit mx-auto'>
-                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
+                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
                         </div>
                     </div>
                 }
