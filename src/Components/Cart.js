@@ -11,14 +11,14 @@ const CartItem = ({name, imageURL, description, rating, price}) =>{
         <div>
             <div className='flex border border-black justify-between px-6 py-2 w-4/5 my-2 mx-auto'>
                 <div className='w-3/4'>
-                    <p className='line-clamp-1'>{name}</p>
-                    <p>₹ {price===undefined ?250:price/100}</p>
-                    <p>{rating === undefined? 3.2 : rating} ⭐</p>
-                    <p className=' line-clamp-1'>{description}</p>
+                    <p className='line-clamp-1 font-itemFont font-bold text-xl'>{name}</p>
+                    <p className='font-normal'>₹ {price===undefined ?250:price/100}</p>
+                    <p className='font-normal'>{rating === undefined? 3.2 : rating} ⭐</p>
+                    <p className='font-normal line-clamp-1'>{description}</p>
                 </div>
                 <div>
                     <img src={imageURL} className='w-36 h-24 border border-black p-0.5 rounded-md'/>
-                    <button className='border border-black w-36 mt-1' onClick={()=>dispatch(removeItem(name))}>Remove</button>
+                    <button className='border bg-btnBg text-white rounded-md w-36 mt-1' onClick={()=>dispatch(removeItem(name))}>Remove</button>
                 </div>
             </div>
         </div>
@@ -59,25 +59,25 @@ const Cart = () => {
                         <hr/>
                         <div className='flex justify-between'>
                             <div>
-                                <p>Item Total</p>
-                                <p>Delivery fee</p>
-                                <p>Platform fee</p>
-                                <p>GST and Restaurant Charges</p>
+                                <p className='font-normal'>Item Total</p>
+                                <p className='font-normal'>Delivery fee</p>
+                                <p className='font-normal'>Platform fee</p>
+                                <p className='font-normal'>GST and Restaurant Charges</p>
                             </div>
                             <div>
-                                <p>₹ {Math.floor(totalPrice)}</p>
-                                <p>₹ 50</p>
-                                <p>₹ 5</p>
-                                <p>₹ {Math.floor((totalPrice*18)/(100))}</p>
+                                <p className='font-normal'>₹ {Math.floor(totalPrice)}</p>
+                                <p className='font-normal'>₹ 50</p>
+                                <p className='font-normal'>₹ 5</p>
+                                <p className='font-normal'>₹ {Math.floor((totalPrice*18)/(100))}</p>
                             </div>
                         </div>
                         <hr/>
                         <div className='flex justify-between'>
-                            <p>TO PAY</p>
-                            <p>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
+                            <p className='font-itemFont font-bold'>TO PAY</p>
+                            <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
                         </div>
-                        <div className='flex justify-center border border-black w-fit mx-auto'>
-                            <button className='p-1.5' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
+                        <div className='flex justify-center border w-fit mx-auto'>
+                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
                         </div>
                     </div>
                 }
