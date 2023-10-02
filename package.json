@@ -2,9 +2,9 @@
   "name": "food-manor",
   "version": "1.0.0",
   "description": "A food ordering web app.",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Laxmi Kumar Sahani",
   "license": "ISC",
