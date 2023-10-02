@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { IMAGE_URL, NO_IMAGE_URL } from '../config/app-config';
 import { useRestaurantMenu } from '../hooks/useRestaurantMenu';
 import { addItem } from '../utils/cartSlice';
-import {RestaurantMenuShimmer} from './index';
+import {RestaurantMenuShimmer, NotFound} from './index';
 
 
 const MenuItem = ({name, description, imageURL, price, rating}) =>{
@@ -91,7 +91,7 @@ const RestaurantMenu = () => {
                             <button className='p-1.5 border bg-btnBg rounded-r-md text-white hover:bg-blue-950' onClick={()=>handleRestaurantMenu()}>Search</button>
                         </div>
                             {
-                                filteredRestaurantMenu.length === 0 ?<NotFound/> :filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
+                                filteredRestaurantMenu.length === 0 ? <NotFound/> :filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
                             }
                     </div>
                 }

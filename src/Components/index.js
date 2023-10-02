@@ -7,6 +7,6 @@ import RestaurantMenu from './RestaurantMenu';
 import Cart from './Cart';
 import { RestaurantShimmer, RestaurantMenuShimmer } from './Shimmer';
 import ScrollTop from './ScrollTop';
-import NotFound from './NotFound';
+import {NotFound, NoItem }from './NotFound';
 
-export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer, RestaurantShimmer, RestaurantMenuShimmer, ScrollTop, NotFound};
+export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer, RestaurantShimmer, RestaurantMenuShimmer, ScrollTop, NotFound, NoItem};

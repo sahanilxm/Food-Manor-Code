@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { removeItem, clearCart } from '../utils/cartSlice.js';
+import { NoItem } from './index.js';
 
 const CartItem = ({name, imageURL, description, rating, price}) =>{
     
@@ -49,38 +50,40 @@ const Cart = () => {
         <div className='pt-24'>
             <div>
                 {
-                    cartItems.map((item, index) => <CartItem key={index} name={item.name} imageURL={item.imageURL} description={item.description} rating={item.rating} price={item.price}/>)
-                }
-            </div>
-            <div>
-                {
-                    cartItems.length == 0 ? <p>Cart is empty ..... </p> :
-                    <div>
-                        <div className='border border-black px-6 py-2 w-4/5 my-2 mx-auto'>
-                            <hr/>
-                            <div className='flex justify-between'>
-                                <div>
-                                    <p className='font-normal'>Item Total</p>
-                                    <p className='font-normal'>Delivery fee</p>
-                                    <p className='font-normal'>Platform fee</p>
-                                    <p className='font-normal'>GST and Restaurant Charges</p>
-                                </div>
-                                <div>
-                                    <p className='font-normal'>₹ {Math.floor(totalPrice)}</p>
-                                    <p className='font-normal'>₹ 50</p>
-                                    <p className='font-normal'>₹ 5</p>
-                                    <p className='font-normal'>₹ {Math.floor((totalPrice*18)/(100))}</p>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className='flex justify-between'>
-                                <p className='font-itemFont font-bold'>TO PAY</p>
-                                <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
-                            </div>
+                    cartItems.length == 0 ? <NoItem/>: <div>
+                        <div className='w-4/5 mx-auto'>
+                            <p className='font-itemFont text-2xl underline'>Cart Items: </p>
                         </div>
-                        <div className='flex justify-between w-4/5 mx-auto'>
-                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{dispatch(clearCart()) }}>Clear Cart</button>
-                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
+                        {
+                            cartItems.map((item, index) => <CartItem key={index} name={item.name} imageURL={item.imageURL} description={item.description} rating={item.rating} price={item.price}/>)
+                        }
+                        <div>
+                            <div className='border border-black px-6 py-2 w-4/5 my-2 mx-auto'>
+                                <hr/>
+                                <div className='flex justify-between'>
+                                    <div>
+                                        <p className='font-normal'>Item Total</p>
+                                        <p className='font-normal'>Delivery fee</p>
+                                        <p className='font-normal'>Platform fee</p>
+                                        <p className='font-normal'>GST and Restaurant Charges</p>
+                                    </div>
+                                    <div>
+                                        <p className='font-normal'>₹ {Math.floor(totalPrice)}</p>
+                                        <p className='font-normal'>₹ 50</p>
+                                        <p className='font-normal'>₹ 5</p>
+                                        <p className='font-normal'>₹ {Math.floor((totalPrice*18)/(100))}</p>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div className='flex justify-between'>
+                                    <p className='font-itemFont font-bold'>TO PAY</p>
+                                    <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
+                                </div>
+                            </div>
+                            <div className='flex justify-between w-4/5 mx-auto'>
+                                <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{dispatch(clearCart()) }}>Clear Cart</button>
+                                <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
+                            </div>
                         </div>
                     </div>
                 }
