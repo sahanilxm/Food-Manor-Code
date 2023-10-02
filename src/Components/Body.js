@@ -19,10 +19,10 @@ const Body = () =>{
 
 
     return(
-        <div>
+        <div className='p-4'>
             <div className="text-center">
-                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border border-black p-1.5'/>
-                <button onClick={()=>handleRestaurants()} className='border border-black p-1.5'>Search</button>
+                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border p-1.5 rounded-l-md'/>
+                <button onClick={()=>handleRestaurants()} className='p-1.5 bg-btnBg text-white rounded-r-md'>Search</button>
             </div>
             
             <div className='flex flex-wrap mt-4'>

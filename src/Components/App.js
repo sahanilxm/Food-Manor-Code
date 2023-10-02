@@ -6,7 +6,7 @@ import store  from '../utils/store';
 
 const App = () =>{
     return(
-        <div className='p-2 px-4'>
+        <div>
             <Provider store={store}>
                 <Header />
                 <div className='min-h-screen'>
