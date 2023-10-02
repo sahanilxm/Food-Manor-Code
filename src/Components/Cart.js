@@ -9,7 +9,7 @@ const CartItem = ({name, imageURL, description, rating, price}) =>{
 
     return(
         <div>
-            <div className='flex border border-black justify-between px-6 py-2 w-4/5 my-2 mx-auto'>
+            <div className='flex border border-black justify-between px-6 py-2 w-4/5 my-2 mx-auto bg-itemBg'>
                 <div className='w-3/4'>
                     <p className='line-clamp-1 font-itemFont font-bold text-xl'>{name}</p>
                     <p className='font-normal'>₹ {price===undefined ?250:price/100}</p>
@@ -55,28 +55,31 @@ const Cart = () => {
             <div>
                 {
                     cartItems.length == 0 ? <p>Cart is empty ..... </p> :
-                    <div className='border border-black px-6 py-2 w-4/5 my-2 mx-auto'>
-                        <hr/>
-                        <div className='flex justify-between'>
-                            <div>
-                                <p className='font-normal'>Item Total</p>
-                                <p className='font-normal'>Delivery fee</p>
-                                <p className='font-normal'>Platform fee</p>
-                                <p className='font-normal'>GST and Restaurant Charges</p>
+                    <div>
+                        <div className='border border-black px-6 py-2 w-4/5 my-2 mx-auto'>
+                            <hr/>
+                            <div className='flex justify-between'>
+                                <div>
+                                    <p className='font-normal'>Item Total</p>
+                                    <p className='font-normal'>Delivery fee</p>
+                                    <p className='font-normal'>Platform fee</p>
+                                    <p className='font-normal'>GST and Restaurant Charges</p>
+                                </div>
+                                <div>
+                                    <p className='font-normal'>₹ {Math.floor(totalPrice)}</p>
+                                    <p className='font-normal'>₹ 50</p>
+                                    <p className='font-normal'>₹ 5</p>
+                                    <p className='font-normal'>₹ {Math.floor((totalPrice*18)/(100))}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p className='font-normal'>₹ {Math.floor(totalPrice)}</p>
-                                <p className='font-normal'>₹ 50</p>
-                                <p className='font-normal'>₹ 5</p>
-                                <p className='font-normal'>₹ {Math.floor((totalPrice*18)/(100))}</p>
+                            <hr/>
+                            <div className='flex justify-between'>
+                                <p className='font-itemFont font-bold'>TO PAY</p>
+                                <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
                             </div>
                         </div>
-                        <hr/>
-                        <div className='flex justify-between'>
-                            <p className='font-itemFont font-bold'>TO PAY</p>
-                            <p className='font-item font-bold'>₹ {Math.floor((totalPrice*18)/(100))+Math.floor(totalPrice)+55}</p>
-                        </div>
-                        <div className='flex justify-center border w-fit mx-auto'>
+                        <div className='flex justify-between w-4/5 mx-auto'>
+                            <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{dispatch(clearCart()) }}>Clear Cart</button>
                             <button className='p-1.5 bg-btnBg text-white font-itemFont text-xl hover:bg-blue-950' onClick={()=>{ handleOrder() }}>Proceed To Checkout</button>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Header, Footer} from './index';
+import { Header, Footer, ScrollTop} from './index';
 import { Provider } from 'react-redux';
 
 import store  from '../utils/store';
@@ -13,6 +13,7 @@ const App = () =>{
                     <Outlet />
                 </div>
                 <Footer/>
+                <ScrollTop/>
             </Provider>
         </div>
     );

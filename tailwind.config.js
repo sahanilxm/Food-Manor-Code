@@ -8,7 +8,7 @@ module.exports = {
       colors:{
         itemBg:'#FFFFED',
         restaurantBg: '#F5F5F5',
-        logoText:'#800000',
+        userText:'#800000',
         btnBg:'#FC7300',
         navText:'#FC7300'
       },

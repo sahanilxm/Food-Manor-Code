@@ -4,8 +4,8 @@ import Footer from './Footer';
 import Body from './Body';
 import RestaurantCard from './RestaurantCard';
 import RestaurantMenu from './RestaurantMenu';
-import About from './About';
 import Cart from './Cart';
 import { RestaurantShimmer, RestaurantMenuShimmer } from './Shimmer';
+import ScrollTop from './ScrollTop';
 
-export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer, RestaurantShimmer, RestaurantMenuShimmer};
+export { App, Header, Body, RestaurantCard, RestaurantMenu, About, Cart, Footer, RestaurantShimmer, RestaurantMenuShimmer, ScrollTop};

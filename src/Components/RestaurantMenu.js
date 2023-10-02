@@ -70,7 +70,7 @@ const RestaurantMenu = () => {
                         <div className='border flex justify-between px-6 py-2 w-4/5 my-2 mx-auto bg-restaurantBg'>
                             <p className='font-normal'>Recommeded Items</p>
                             <div>
-                                <label className='font-normal' for="sortType">Sort :</label>
+                                <label className='font-normal'>Sort :</label>
                                 <select name='sortType' className='font-normal'>
                                     <option value="none" className='font-normal'>None</option>
                                     <option value="price" className='font-normal'>Price</option>
