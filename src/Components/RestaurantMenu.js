@@ -75,23 +75,28 @@ const RestaurantMenu = () => {
                 {
                     restaurantMenu?.length == 0 ? <RestaurantMenuShimmer/> : 
                     <div>
-                        <div className='border flex justify-between px-6 py-2 w-4/5 my-2 mx-auto bg-restaurantBg'>
-                            <p className='font-normal'>Recommeded Items</p>
-                            <div>
-                                <label className='font-normal'>Sort :</label>
-                                <select className='font-normal' onChange={(e)=>handleSorting(e.target.value)}>
-                                    <option value="none" className='font-normal'>None</option>
-                                    <option value="price" className='font-normal'>Price</option>
-                                    <option value="rating" className='font-normal'>Rating</option>
-                                </select>
-                            </div>
-                        </div>
                         <div className='text-center'>
                             <input placeholder='Search a food...' className='border  p-1.5 rounded-l-md font-itemFont font-bold w-1/2 md:w-1/4' onChange={(e)=> setSearchItem(e.target.value)}/>
                             <button className='p-1.5 border bg-btnBg rounded-r-md text-white hover:bg-blue-950' onClick={()=>handleRestaurantMenu()}>Search</button>
                         </div>
                             {
-                                filteredRestaurantMenu.length === 0 ? <NotFound/> :filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
+                                filteredRestaurantMenu.length === 0 ? <NotFound/> :
+                                <div>
+                                    <div className='border flex justify-between px-6 py-2 w-4/5 my-2 mx-auto bg-restaurantBg'>
+                                        <p className='font-normal'>Recommeded Items</p>
+                                        <div>
+                                            <label className='font-normal'>Sort :</label>
+                                            <select className='font-normal' onChange={(e)=>handleSorting(e.target.value)}>
+                                                <option value="none" className='font-normal'>None</option>
+                                                <option value="price" className='font-normal'>Price</option>
+                                                <option value="rating" className='font-normal'>Rating</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {
+                                        filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
+                                    }
+                                </div>
                             }
                     </div>
                 }
