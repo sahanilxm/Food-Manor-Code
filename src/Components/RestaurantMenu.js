@@ -31,6 +31,7 @@ const MenuItem = ({name, description, imageURL, price, rating}) =>{
 
 
 const RestaurantMenu = () => {
+
     let params = useParams();
     params = params.id;
 
@@ -39,10 +40,17 @@ const RestaurantMenu = () => {
 
     const [restaurantDetail,restaurantMenu] = useRestaurantMenu(params, setFilteredRestaurantMenu);
 
+    const handleSorting = (sortingParam) => {
+        if(sortingParam == 'none'){
+            return ;
+        }
+        let newArr = filteredRestaurantMenu;
+        newArr.sort((a,b) => a?.card?.info[`${sortingParam}`] - b?.card?.info[`${sortingParam}`]);
+        setFilteredRestaurantMenu(newArr);
+    };
+
     const handleRestaurantMenu = () =>{
-        console.log(searchItem);
         let filteredData = restaurantMenu.filter(item => item?.card?.info?.name.toLowerCase().includes(searchItem.toLowerCase()));
-        console.log(filteredData);
         setFilteredRestaurantMenu(filteredData);
     };
 
@@ -71,7 +79,7 @@ const RestaurantMenu = () => {
                             <p className='font-normal'>Recommeded Items</p>
                             <div>
                                 <label className='font-normal'>Sort :</label>
-                                <select name='sortType' className='font-normal'>
+                                <select className='font-normal' onChange={(e)=>handleSorting(e.target.value)}>
                                     <option value="none" className='font-normal'>None</option>
                                     <option value="price" className='font-normal'>Price</option>
                                     <option value="rating" className='font-normal'>Rating</option>
