@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 import { useRestaurants } from "../hooks/useRestaurant";
-import { RestaurantCard, RestaurantShimmer} from './index';
+import { NotFound, RestaurantCard, RestaurantShimmer} from './index';
 import { IMAGE_URL } from "../config/app-config";
 import { Link } from 'react-router-dom';
 
@@ -21,14 +21,13 @@ const Body = () =>{
     return(
         <div className='p-4 pt-24'>
             <div className="text-center">
-                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border p-1.5 rounded-l-md font-restaurantFont'/>
+                <input placeholder="Search a restaurant...." onChange={(e)=>setRestaurantName(e.target.value)} className='border p-1.5 rounded-l-md font-restaurantFont w-1/3'/>
                 <button onClick={()=>handleRestaurants()} className='p-1.5 bg-btnBg text-white rounded-r-md hover:bg-blue-950'>Search</button>
             </div>
             
             <div className='flex flex-wrap mt-4'>
-                {/* <RestaurantShimmer/> */}
                 {
-                    filteredRestaurant?.length === 0 ? <RestaurantShimmer/> : filteredRestaurant?.map(restaurant => <div key={restaurant?.info?.id} className='w-1/6'><Link to={`restaurants/${restaurant?.info?.id}`} ><RestaurantCard name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.costForTwo} rating={restaurant?.info?.avgRating} totalRating={restaurant?.info?.totalRatingsString} cuisines={restaurant?.info?.cuisines}/ ></Link></div>)
+                    restaurantList?.length === 0 ? <RestaurantShimmer/> : (filteredRestaurant.length==0?<NotFound/>:filteredRestaurant?.map(restaurant => <div key={restaurant?.info?.id} className='w-1/6'><Link to={`restaurants/${restaurant?.info?.id}`} ><RestaurantCard name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.costForTwo} rating={restaurant?.info?.avgRating} totalRating={restaurant?.info?.totalRatingsString} cuisines={restaurant?.info?.cuisines}/ ></Link></div>))
                 }   
             </div>
             

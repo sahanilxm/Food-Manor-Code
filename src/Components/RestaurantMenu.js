@@ -79,11 +79,11 @@ const RestaurantMenu = () => {
                             </div>
                         </div>
                         <div className='text-center'>
-                            <input placeholder='Search a food...' className='border  p-1.5 rounded-l-md font-itemFont font-bold ' onChange={(e)=> setSearchItem(e.target.value)}/>
+                            <input placeholder='Search a food...' className='border  p-1.5 rounded-l-md font-itemFont font-bold w-1/4' onChange={(e)=> setSearchItem(e.target.value)}/>
                             <button className='p-1.5 border bg-btnBg rounded-r-md text-white hover:bg-blue-950' onClick={()=>handleRestaurantMenu()}>Search</button>
                         </div>
                             {
-                                filteredRestaurantMenu.length === 0 ?<p>No Item Present</p> :filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
+                                filteredRestaurantMenu.length === 0 ?<NotFound/> :filteredRestaurantMenu.map((item, index) =><MenuItem key={index} name={item?.card?.info?.name} description={item?.card?.info?.description} imageURL={item?.card?.info?.imageId!==undefined?IMAGE_URL+item?.card?.info?.imageId:NO_IMAGE_URL} rating={item?.card?.info?.ratings?.aggregatedRating?.rating} price={item?.card?.info?.price} />)
                             }
                     </div>
                 }
