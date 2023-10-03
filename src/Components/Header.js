@@ -6,7 +6,7 @@ const MobileView = () => {
     const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full">
+    <div className="w-full shadow-md shadow-restaurantBg fixed z-50">
         {
             isOpen == true ? 
             <div className="bg-black h-screen">
@@ -48,7 +48,7 @@ const Header = () =>{
     return(
         <>
             <MobileView/>
-            <div className="fixed w-full hidden sm:flex">
+            <div className="w-full hidden sm:flex shadow-md shadow-restaurantBg fixed z-50">
                 <div className="flex justify-between border w-full rounded-md p-2 md:p-4 lg:p-6 bg-restaurantBg">
                     <div>
                         <p className="text-blue-950 font-logoFont text-2xl font-extrabold">Food Manor</p>

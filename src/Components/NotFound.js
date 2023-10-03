@@ -14,10 +14,10 @@ export const NotFound = () =>{
 
 export const NoItem = () => {
     return(
-        <div className="w-full md:flex md:justify-center space-x-4">
+        <div className="w-full md:flex md:justify-center">
             <img className="w-4/5 md:w-2/5 md:h-4/5 mx-auto" src={emptyCart} />
-            <div className="md:my-64 text-center">
-                <p className="font-itemFont text-3xl mx-auto">It seems like your cart is currently empty. 🙁</p>
+            <div className="md:my-64 md:w-2/5 text-center md:pr-10">
+                <p className="font-itemFont text-3xl">It seems like your cart is currently empty. 🙁</p>
             </div>
         </div>
     );
