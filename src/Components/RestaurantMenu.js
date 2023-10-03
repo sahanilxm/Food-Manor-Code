@@ -41,11 +41,18 @@ const RestaurantMenu = () => {
     const [restaurantDetail,restaurantMenu] = useRestaurantMenu(params, setFilteredRestaurantMenu);
 
     const handleSorting = (sortingParam) => {
-        if(sortingParam == 'none'){
-            return ;
-        }
-        let newArr = filteredRestaurantMenu;
-        newArr.sort((a,b) => a?.card?.info[`${sortingParam}`] - b?.card?.info[`${sortingParam}`]);
+        let newArr = [...filteredRestaurantMenu];
+        newArr.sort((a,b) => {
+            if(sortingParam === 'price'){
+                return (a?.card?.info?.price ===undefined ? 250 :a?.card?.info?.price) - (b?.card?.info?.price ===undefined ? 250 :b?.card?.info?.price);
+            }
+            else if(sortingParam === 'none'){
+                return a?.card?.info?.id - b?.card?.info?.id;
+            }
+            else{
+                return (a?.card?.info?.ratings?.aggregatedRating?.rating === undefined?3.2:a?.card?.info?.ratings?.aggregatedRating?.rating)  - (b?.card?.info?.ratings?.aggregatedRating?.rating === undefined?3.2:b?.card?.info?.ratings?.aggregatedRating?.rating);
+            }
+        });
         setFilteredRestaurantMenu(newArr);
     };
 
