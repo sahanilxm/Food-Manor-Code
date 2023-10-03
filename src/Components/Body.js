@@ -27,7 +27,7 @@ const Body = () =>{
             
             <div className='flex flex-wrap mt-4 w-full'>
                 {
-                    restaurantList?.length === 0 ? <RestaurantShimmer/> : (filteredRestaurant.length==0?<NotFound/>:filteredRestaurant?.map(restaurant =><div className='w-full min-[450px]:w-1/2 md:w-1/4 lg:w-1/6'><div key={restaurant?.info?.id}><Link to={`restaurants/${restaurant?.info?.id}`} ><RestaurantCard name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.costForTwo} rating={restaurant?.info?.avgRating} totalRating={restaurant?.info?.totalRatingsString} cuisines={restaurant?.info?.cuisines}/ ></Link></div></div> ))
+                    restaurantList?.length === 0 ? <RestaurantShimmer/> : (filteredRestaurant.length==0?<NotFound/>:filteredRestaurant?.map(restaurant =><div key={restaurant?.info?.id} className='w-full min-[450px]:w-1/2 md:w-1/4 lg:w-1/6'><div><Link to={`restaurants/${restaurant?.info?.id}`} ><RestaurantCard name={restaurant?.info?.name} imageURL={IMAGE_URL+ restaurant?.info?.cloudinaryImageId} price={restaurant?.info?.costForTwo} rating={restaurant?.info?.avgRating} totalRating={restaurant?.info?.totalRatingsString} cuisines={restaurant?.info?.cuisines}/ ></Link></div></div> ))
                 }   
             </div>
             

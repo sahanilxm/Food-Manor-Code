@@ -14,7 +14,6 @@ export const useRestaurants = (setFilteredRestaurant) =>{
 
             for(let i=0;i<response?.data?.cards?.length;i++){
                 if(response?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants !== undefined){
-                        // response = response?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
                         for(let j=0;j<response?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants.length;j++){
                             restaurantSet.add(response?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants[j]);
                             if(restaurantSet.size >= 30){
@@ -26,8 +25,6 @@ export const useRestaurants = (setFilteredRestaurant) =>{
                         }
                 }
             }
-
-            console.log(restaurantSet);
             setRestaurantList(Array.from(restaurantSet));
             setFilteredRestaurant(Array.from(restaurantSet));
         };

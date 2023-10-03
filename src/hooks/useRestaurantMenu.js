@@ -13,18 +13,24 @@ export const useRestaurantMenu = (params, setFilteredRestaurantMenu) => {
             response = await response.json();
             setRestaurantDetail(response?.data?.cards[0]?.card?.card?.info);
 
+
             let menuSet = new Set();
-            for(let i=0;i<response?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.length;i++){
-                if(response?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[i]?.card?.card?.itemCards !== undefined){
-                    for(let j=0;j<response?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[i]?.card?.card?.itemCards.length;j++){
-                        menuSet.add(response?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[i]?.card?.card?.itemCards[j]);
-                        if(menuSet.size >= 30){
-                            break;
+            for(let i=0;i<response?.data?.cards?.length;i++){
+                if(response?.data?.cards[i]?.groupedCard?.cardGroupMap?.REGULAR?.cards !== undefined){
+                    for(let j=0;j<response?.data?.cards[i]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.length;j++){
+                        if(response?.data?.cards[i]?.groupedCard?.cardGroupMap?.REGULAR?.cards[j]?.card?.card?.itemCards !== undefined){
+                            for(let k=0;k<response?.data?.cards[i]?.groupedCard?.cardGroupMap?.REGULAR?.cards[j]?.card?.card?.itemCards?.length;k++){
+                                menuSet.add(response?.data?.cards[i]?.groupedCard?.cardGroupMap?.REGULAR?.cards[j]?.card?.card?.itemCards[k]);
+                                if(menuSet.size >= 30){
+                                    break;
+                                }
+                            }
+                            if(menuSet.size >= 30){
+                                break;
+                            }
                         }
                     }
-                    if(menuSet.size >= 30){
-                        break;
-                    }
+                    break;
                 }
             }
             setFilteredRestaurantMenu(Array.from(menuSet));
