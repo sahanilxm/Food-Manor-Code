@@ -9,6 +9,7 @@ export const useRestaurantMenu = (params, setFilteredRestaurantMenu) => {
 
     useEffect(()=>{
         const fetchData = async () => {
+            console.log(RESTAURANT_MENU_API_URL+params);
             let response = await fetch (RESTAURANT_MENU_API_URL+params);
             response = await response.json();
             setRestaurantDetail(response?.data?.cards[0]?.card?.card?.info);
